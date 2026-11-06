@@ -36,13 +36,23 @@ class Yanba {
     this.x = startX;
     this.y = startY;
     // add properties for your dancer here:
-    //..
-    //..
+
+    //Jump Motion
+    this.floorY = startY
+    this.angle = 0
+    this.jump = 50 // Max height of the jump (in pixels)
+    this.jumpSpeed = 0.05
+
+    //Limp Motion
+    this.limpMotion=sin(frameCount * 0.18) * 0.35
+
     //..
   }
   update() {
     // update properties here to achieve
     // your dancer's desired moves and behaviour
+    this.angle += this.jumpSpeed;
+    this.y = this.floorY - sin(this.angle) * this.jump;
   }
   display() {
     // the push and pop, along with the translate 
@@ -53,11 +63,26 @@ class Yanba {
 
     // ******** //
     // ⬇️ draw your dancer from here ⬇️
-
-
-
-
-
+    scale(this.size)
+    noStroke()
+    fill(235,60,39)//bodycolor
+    ellipse(0,0,120,100)
+    fill(154,205,50)//stemcolor
+    triangle(0-5,0-45,0+5,0-70,0+10,0-65)//stem
+    fill(0)//eyecolor
+    circle(0-25,0-10,25)//eye
+    circle(0+25,0-10,25)
+    fill(255)
+    circle(0-20,0-10,13)//pupil
+    circle(0+30,0-10,13)
+    fill(139,37,0)
+    ellipse(0,0+20,30,20)//mouth
+    stroke(255,239,213)//limpcolor
+    line(0+60,0,0+80,0+10)
+    line(0-60,0,0-80,0+10)
+    line(0+20,0+46,0+15,0+80)
+    line(0-20,0+46,0-15,0+80)
+    
 
     // ⬆️ draw your dancer above ⬆️
     // ******** //
@@ -68,7 +93,7 @@ class Yanba {
     // it is using "this" because this function, too, 
     // is a part if your Dancer object.
     // comment it out or delete it eventually.
-    this.drawReferenceShapes()
+    //this.drawReferenceShapes()
 
     pop();
   }
