@@ -40,7 +40,7 @@ class Yanba {
     //Jump Motion
     this.floorY = startY
     this.angle = 0
-    this.jump = 50 // Max height of the jump (in pixels)
+    this.jump = 50 // Max height of the jump
     this.jumpSpeed = 0.05
 
     //Limp Motion
