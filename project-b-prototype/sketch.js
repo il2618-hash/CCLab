@@ -1,6 +1,6 @@
 let bedImg, TVImg, openboxImg, closeboxImg, carImg
 let items=[]
-let toybox
+let toybox=[]
 
 
 async function setup() {
@@ -15,7 +15,9 @@ async function setup() {
   items.push(new Item(bedImg,520,250,480,350,"Car Bed"))
   items.push(new Item(TVImg, 0,320,100,200,"TV"))
   items.push(new Item(carImg,0,0,180,200,"Yaoyao"))
-  //
+
+  //Separte list for toy box: open/close
+ 
 }
 
 function draw() {
@@ -33,17 +35,20 @@ function draw() {
 
 
 class Item{
-  constructor(x,y,w,h,img){
+  constructor(img,x,y,w,h){
+    this.img=img
     this.x=x
     this.y=y
     this.w=w
     this.h=h
-    this.img=img
   }
 
   isHovered(){
     return(
-      mouseX > this.x && mouseX < this.x + this.w && mouseY > this.y && mouseY < this.y + this.h
+      mouseX > this.x && 
+      mouseX < this.x + this.w && 
+      mouseY > this.y && 
+      mouseY < this.y + this.h
     )
   }
 
@@ -56,7 +61,6 @@ class Item{
 
     imageMode(CENTER)
     image(this.img,0,0,this.w,this.h)
-
     pop()
   }
 }
